@@ -1,7 +1,12 @@
 {
   "name": "spacex-stats",
   "version": "1.0.0",
-  "description": "Lists SpaceX launch stats",
+  "description": "Lists SpaceX launch stats - demo",
+  "keywords": [
+    "GraphQL",
+    "Apollo",
+    "React"
+  ],
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
