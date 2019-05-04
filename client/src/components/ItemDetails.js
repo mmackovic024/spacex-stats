@@ -82,7 +82,12 @@ export default function ItemDetails(props) {
               <br />
               <b>Launch site:</b> {site_name_long}
               <br />
-              <b>Launch:</b> {launch_success ? 'successful' : 'failed'}
+              <b>Launch:</b>{' '}
+              {launch_success === null
+                ? 'unavailable'
+                : launch_success
+                ? 'successful'
+                : 'failed'}
               <br />
               <b>Rocket name:</b> {rocket_name}
               <br />
