@@ -1,9 +1,13 @@
 const axios = require('axios');
 
 module.exports = {
-  launches: () => {
+  launches: args => {
     return axios
-      .get('https://api.spacexdata.com/v3/launches')
+      .get(
+        `https://api.spacexdata.com/v3/launches?limit=${args.limit}&offset=${
+          args.offset
+        }`
+      )
       .then(res => res.data);
   },
   launch: args => {

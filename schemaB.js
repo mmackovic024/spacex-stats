@@ -31,7 +31,7 @@ type Link {
 }
 
 type RootQuery {
-    launches: [Launch]
+    launches(limit: Int!, offset: Int!): [Launch]
     launch(flight_number: Int!): Launch
     rockets: [Rocket]
     rocket(id: String!): Rocket

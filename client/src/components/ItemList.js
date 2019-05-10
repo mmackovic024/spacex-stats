@@ -7,8 +7,8 @@ import Item from './Item';
 
 // Query for all launches
 const LAUNCHES_QUERY = gql`
-  query LaunchesQuery {
-    launches {
+  query LaunchesQuery($limit: Int!, $offset: Int!) {
+    launches(limit: $limit, offset: $offset) {
       flight_number
       mission_name
       launch_year
@@ -22,7 +22,13 @@ export default function ItemList() {
     <Fragment>
       <h2 className="black white-text center-align">Launches</h2>
       <Legend />
-      <Query query={LAUNCHES_QUERY}>
+      <Query
+        query={LAUNCHES_QUERY}
+        variables={{
+          limit: 10,
+          offset: 0
+        }}
+      >
         {({ loading, error, data }) => {
           if (loading)
             return (
