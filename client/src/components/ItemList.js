@@ -29,7 +29,7 @@ export default function Item({ launches, onLoadMore }) {
             <div className="col m3 s4">
               <ItemDetails id={flight_number} />
             </div>
-            {index === launches.length - 5 && <Waypoint onEnter={onLoadMore} />}
+            {index === launches.length - 3 && <Waypoint onEnter={onLoadMore} />}
           </div>
         );
       })}
