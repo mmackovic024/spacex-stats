@@ -3,7 +3,7 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import './App.css';
 import logo from './logo.png';
-import ItemList from './components/ItemList';
+import ItemQuery from './components/ItemQuery';
 
 const client = new ApolloClient({
   uri: '/graphql'
@@ -18,7 +18,7 @@ function App() {
           alt="SpaceX"
           style={{ width: 350, display: 'block', margin: 'auto' }}
         />
-        <ItemList />
+        <ItemQuery />
       </div>
     </ApolloProvider>
   );

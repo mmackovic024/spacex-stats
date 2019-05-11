@@ -29,7 +29,6 @@ const LAUNCH_QUERY = gql`
 `;
 
 export default function ItemDetails(props) {
-  // console.log(flight_number);
   const flight_number = props.id;
   const trigger = (
     <Button waves="light" small className="grey darken-2">

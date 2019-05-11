@@ -1,52 +1,38 @@
-import React, { Fragment } from 'react';
-import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
-import { Preloader } from 'react-materialize';
-import Legend from './Legend';
-import Item from './Item';
+import React from 'react';
+import { Waypoint } from 'react-waypoint';
+import ItemDetails from './ItemDetails';
 
-// Query for all launches
-const LAUNCHES_QUERY = gql`
-  query LaunchesQuery($limit: Int!, $offset: Int!) {
-    launches(limit: $limit, offset: $offset) {
-      flight_number
-      mission_name
-      launch_year
-      launch_success
-    }
-  }
-`;
-
-export default function ItemList() {
+export default function Item({ launches, onLoadMore }) {
   return (
-    <Fragment>
-      <h2 className="black white-text center-align">Launches</h2>
-      <Legend />
-      <Query
-        query={LAUNCHES_QUERY}
-        variables={{
-          limit: 10,
-          offset: 0
-        }}
-      >
-        {({ loading, error, data }) => {
-          if (loading)
-            return (
-              <div className="center-align">
-                <Preloader size="small" />
-              </div>
-            );
-          if (error) console.log(error);
-
-          return (
-            <Fragment>
-              {data.launches.map(launch => (
-                <Item key={launch.flight_number} launch={launch} />
-              ))}
-            </Fragment>
-          );
-        }}
-      </Query>
-    </Fragment>
+    <div>
+      {launches.map((launch, index) => {
+        const {
+          flight_number,
+          mission_name,
+          launch_year,
+          launch_success
+        } = launch;
+        return (
+          <div
+            key={flight_number}
+            className="grey darken-4 grey-text lighten-5 row valign-wrapper"
+          >
+            <div className="col m9 s8">
+              <h5 style={{ marginTop: '1.5rem' }}>
+                Mission:{' '}
+                <span className={launch_success ? 'green-text' : 'red-text'}>
+                  {mission_name}
+                </span>
+              </h5>
+              <h6 style={{ marginBottom: '1.5rem' }}>Year: {launch_year}</h6>
+            </div>
+            <div className="col m3 s4">
+              <ItemDetails id={flight_number} />
+            </div>
+            {index === launches.length - 5 && <Waypoint onEnter={onLoadMore} />}
+          </div>
+        );
+      })}
+    </div>
   );
 }
