@@ -15,7 +15,7 @@ export default function Item({ launches, onLoadMore }) {
         return (
           <div
             key={flight_number}
-            className="grey darken-4 grey-text lighten-5 row valign-wrapper"
+            className="grey darken-3 grey-text text-lighten-4 row valign-wrapper"
           >
             <div className="col m9 s8">
               <h5 style={{ marginTop: '1.5rem' }}>
@@ -29,7 +29,13 @@ export default function Item({ launches, onLoadMore }) {
             <div className="col m3 s4">
               <ItemDetails id={flight_number} />
             </div>
-            {index === launches.length - 3 && <Waypoint onEnter={onLoadMore} />}
+            {index === launches.length - 3 && (
+              <Waypoint
+                onEnter={onLoadMore}
+                fireOnRapidScroll={true}
+                bottomOffset="-600px"
+              />
+            )}
           </div>
         );
       })}

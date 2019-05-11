@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { Modal, Button, Preloader } from 'react-materialize';
 import Moment from 'react-moment';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 // Query for one launch
 const LAUNCH_QUERY = gql`
@@ -31,7 +32,7 @@ const LAUNCH_QUERY = gql`
 export default function ItemDetails(props) {
   const flight_number = props.id;
   const trigger = (
-    <Button waves="light" small className="grey darken-2">
+    <Button waves="light" small className="grey darken-2 hoverable">
       Details
     </Button>
   );
@@ -100,7 +101,7 @@ export default function ItemDetails(props) {
               <br />
               {mission_patch_small ? (
                 <div className="center-align">
-                  <img
+                  <LazyLoadImage
                     className="responsive-img"
                     src={mission_patch_small}
                     alt="Mission patch"
