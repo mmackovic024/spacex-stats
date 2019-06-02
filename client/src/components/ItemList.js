@@ -20,9 +20,13 @@ export default function Item({ launches, onLoadMore }) {
             <div className="col m9 s8">
               <h5 style={{ marginTop: '1.5rem' }}>
                 Mission:{' '}
-                <span className={launch_success ? 'green-text' : 'red-text'}>
-                  {mission_name}
-                </span>
+                {launch_success === null ? (
+                  <span className="blue-text">{mission_name}</span>
+                ) : (
+                  <span className={launch_success ? 'green-text' : 'red-text'}>
+                    {mission_name}
+                  </span>
+                )}
               </h5>
               <h6 style={{ marginBottom: '1.5rem' }}>Year: {launch_year}</h6>
             </div>
