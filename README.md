@@ -5,4 +5,4 @@ Made for learning purposes following [GraphQL With React & Apollo tutorial](http
 
 Use **npm run dev** to start server and client simultaneously on local computer
 
-
+[Live app on Heroku](https://damp-wave-11408.herokuapp.com/)
