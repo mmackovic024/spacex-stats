@@ -22,6 +22,16 @@ export default function ItemQuery() {
     <>
       <h2 className="black white-text center-align">Launches</h2>
       <Legend />
+      <h6 className="center-align">
+        <a
+          href="https://github.com/mmackovic024/spacex-stats.git"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Code on GitHub
+        </a>
+      </h6>
+      <br />
       <Query
         query={LAUNCHES_QUERY}
         variables={{
