@@ -9,6 +9,7 @@
   ],
   "main": "server.js",
   "scripts": {
+    "install": "cd ./client && npm i && cd ..",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
